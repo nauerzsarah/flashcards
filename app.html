@@ -60,16 +60,6 @@
     <!-- <script src="js/firebase-config.js"></script> -->
     <!-- <script src="js/app.js"></script> -->
     
-    <script>
-        // Uma lógica temporária apenas para testarmos o clique no Safari/Chrome antes do CSS definitivo
-        function virarCard() {
-            const card = document.getElementById('flashcard');
-            card.classList.toggle('flipped');
-        }
-        
-        // Exibe o idioma selecionado no topo
-        const idioma = localStorage.getItem('idiomaSelecionado') || 'Não selecionado';
-        document.getElementById('idioma-titulo').innerText = idioma.toUpperCase();
-    </script>
+       <script type="module" src="js/app.js"></script>
 </body>
 </html>
