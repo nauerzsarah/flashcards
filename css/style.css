@@ -2,12 +2,12 @@
    CONFIGURAÇÕES GERAIS & CORES
    ========================================================================== */
 :root {
-    --bg-color: #f4f6f9;
-    --card-bg: #ffffff;
+    --bg-color: #f5d3dd;
+    --card-bg: #f9f9f9;
     --text-main: #2d3748;
     --text-muted: #718096;
-    --primary-color: #4a5568;
-    --accent-color: #3182ce;
+    --primary-color: #ed7bab;
+    --accent-color: #e42278;
     --border-radius: 16px;
     --transition-speed: 0.6s;
 }
