@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Importar Flashcards</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+</head>
+<body>
+    <div class="welcome-container">
+        <h1>Importar de Excel (CSV)</h1>
+        <p>Selecione o arquivo CSV salvo do seu Excel.</p>
+        
+        <input type="file" id="csv-file" accept=".csv" style="margin-bottom: 20px;">
+        
+        <button id="btn-importar" class="btn-nav">Enviar para Firebase</button>
+        
+        <p id="status" style="margin-top: 20px; font-weight: bold;"></p>
+        <button onclick="window.location.href='index.html'" class="btn-back" style="margin-top: 20px;">Voltar ao Início</button>
+    </div>
+
+    <script type="module">
+        import { db, collection } from "./js/firebase-config.js";
+        import { addDoc } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
+
+        const btn = document.getElementById('btn-importar');
+        const fileInput = document.getElementById('csv-file');
+        const status = document.getElementById('status');
+
+        btn.onclick = function() {
+            const file = fileInput.files[0];
+            if (!file) {
+                alert("Selecione um arquivo primeiro!");
+                return;
+            }
+
+            status.innerText = "Processando...";
+
+            Papa.parse(file, {
+                header: true,
+                skipEmptyLines: true,
+                complete: async function(results) {
+                    const dados = results.data;
+                    let sucessos = 0;
+
+                    for (const item of dados) {
+                        try {
+                            // Envia cada linha do Excel para a coleção flashcards
+                            await addDoc(collection(db, "flashcards"), {
+                                front: item.front,
+                                back: item.back,
+                                example: item.example,
+                                level: item.level,
+                                idioma: item.idioma.toLowerCase().trim()
+                            });
+                            sucessos++;
+                            status.innerText = `Enviando: ${sucessos} de ${dados.length}`;
+                        } catch (e) {
+                            console.error("Erro ao enviar item:", item, e);
+                        }
+                    }
+                    status.innerText = `Sucesso! ${sucessos} cards importados.`;
+                }
+            });
+        };
+    </script>
+</body>
+</html>
