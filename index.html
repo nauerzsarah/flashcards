@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polyglot Cards - Seleção de Idioma</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="welcome-container">
+        <h1>Escolha um Idioma para Praticar</h1>
+        <p>Selecione um dos idiomas abaixo para começar seus estudos:</p>
+        
+        <div class="lang-grid">
+            <button onclick="selecionarIdioma('ingles')" class="btn-lang ingles">Inglês</button>
+            <button onclick="selecionarIdioma('espanhol')" class="btn-lang espanhol">Espanhol</button>
+            <button onclick="selecionarIdioma('alemao')" class="btn-lang alemao">Alemão</button>
+            <button onclick="selecionarIdioma('polones')" class="btn-lang polones">Polonês</button>
+            <button onclick="selecionarIdioma('russo')" class="btn-lang russo">Russo</button>
+        </div>
+    </div>
+
+    <script>
+        function selecionarIdioma(idioma) {
+            // Guarda o idioma escolhido no navegador para a próxima página saber o que carregar
+            localStorage.setItem('idiomaSelecionado', idioma);
+            // Redireciona para a página do app
+            window.location.href = 'app.html';
+        }
+    </script>
+</body>
+</html>
