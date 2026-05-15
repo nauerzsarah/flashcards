@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <!-- Meta tag crucial para o site não ficar minúsculo no iPhone/iPad -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polyglot Cards - Praticar</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- Cabeçalho com o idioma atual e botão de voltar -->
+        <header class="app-header">
+            <button onclick="window.location.href='index.html'" class="btn-back">← Voltar</button>
+            <h2 id="idioma-titulo">Idioma</h2>
+        </header>
+
+        <!-- Área do Flashcard -->
+        <div class="flashcard-container">
+            <!-- Usaremos a classe 'flipped' no JavaScript para virar o card -->
+            <div class="flashcard" id="flashcard" onclick="virarCard()">
+                
+                <!-- LADO DA FRENTE (Aparece primeiro) -->
+                <div class="card-face card-front">
+                    <div class="card-content">
+                        <p class="label">Termo</p>
+                        <h3 id="card-front-text">Carregando...</h3>
+                        <hr>
+                        <p class="label">Exemplo</p>
+                        <p id="card-example-text" class="example-text">Carregando exemplo...</p>
+                    </div>
+                    <small class="tap-hint">Toque para ver a resposta</small>
+                </div>
+
+                <!-- LADO DE TRÁS (Aparece ao clicar) -->
+                <div class="card-face card-back">
+                    <div class="card-content">
+                        <!-- Nível destacado no topo do verso -->
+                        <span id="card-level" class="badge-level">A1</span>
+                        
+                        <p class="label">Tradução / Significado</p>
+                        <h3 id="card-back-text">Carregando...</h3>
+                    </div>
+                    <small class="tap-hint">Toque para ver a frente</small>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Controles de Navegação -->
+        <div class="navigation-controls">
+            <button id="btn-prev" onclick="cartaAnterior()" class="btn-nav">Anterior</button>
+            <span id="card-counter">0 / 0</span>
+            <button id="btn-next" onclick="proximaCarta()" class="btn-nav">Próxima</button>
+        </div>
+    </div>
+
+    <!-- Scripts que usaremos mais para a frente -->
+    <!-- <script src="js/firebase-config.js"></script> -->
+    <!-- <script src="js/app.js"></script> -->
+    
+    <script>
+        // Uma lógica temporária apenas para testarmos o clique no Safari/Chrome antes do CSS definitivo
+        function virarCard() {
+            const card = document.getElementById('flashcard');
+            card.classList.toggle('flipped');
+        }
+        
+        // Exibe o idioma selecionado no topo
+        const idioma = localStorage.getItem('idiomaSelecionado') || 'Não selecionado';
+        document.getElementById('idioma-titulo').innerText = idioma.toUpperCase();
+    </script>
+</body>
+</html>
