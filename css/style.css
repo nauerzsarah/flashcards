@@ -239,3 +239,28 @@ hr {
     min-width: 60px;
     text-align: center;
 }
+
+.btn-audio {
+    background: #edf2f7;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 15px;
+    color: #4a5568;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    transition: background 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.btn-audio:hover {
+    background: #e2e8f0;
+}
+
+.btn-audio:active {
+    transform: scale(0.95);
+}
