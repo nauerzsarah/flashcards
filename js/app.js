@@ -101,3 +101,26 @@ window.virarCard = function() {
 
 // Executa a busca assim que a página carrega
 carregarFlashcards();
+
+window.falarTexto = function(event) {
+    // impede que o card vire ao clicar no botão de áudio
+    event.stopPropagation();
+
+    const texto = document.getElementById('card-front-text').innerText;
+    const msg = new SpeechSynthesisUtterance();
+    msg.text = texto;
+
+    // Mapeamento de códigos de voz para cada idioma
+    const vozes = {
+        'ingles': 'en-US',
+        'espanhol': 'es-ES',
+        'alemao': 'de-DE',
+        'polones': 'pl-PL',
+        'russo': 'ru-RU'
+    };
+
+    msg.lang = vozes[idiomaSelecionado] || 'en-US';
+    msg.rate = 0.9; // Velocidade um pouco mais lenta para facilitar o aprendizado
+
+    window.speechSynthesis.speak(msg);
+};
