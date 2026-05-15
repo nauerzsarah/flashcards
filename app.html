@@ -23,16 +23,21 @@
                 
                 <!-- LADO DA FRENTE (Aparece primeiro) -->
                 <div class="card-face card-front">
-                    <div class="card-content">
-                        <p class="label">Termo</p>
-                        <h3 id="card-front-text">Carregando...</h3>
-                        <hr>
-                        <p class="label">Exemplo</p>
-                        <p id="card-example-text" class="example-text">Carregando exemplo...</p>
-                    </div>
-                    <small class="tap-hint">Toque para ver a resposta</small>
-                </div>
+    <div class="card-content">
+        <p class="label">Termo</p>
+        <h3 id="card-front-text">Carregando...</h3>
+        
+        <button onclick="falarTexto(event)" class="btn-audio">
+            <span role="img" aria-label="Ouvir">🔊 Ouvir Pronúncia</span>
+        </button>
 
+        <hr>
+        <p class="label">Exemplo</p>
+        <p id="card-example-text" class="example-text">Carregando exemplo...</p>
+    </div>
+    <small class="tap-hint">Toque para ver a resposta</small>
+</div>
+              
                 <!-- LADO DE TRÁS (Aparece ao clicar) -->
                 <div class="card-face card-back">
                     <div class="card-content">
