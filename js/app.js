@@ -124,3 +124,23 @@ window.falarTexto = function(event) {
 
     window.speechSynthesis.speak(msg);
 };
+window.falarExemplo = function(event) {
+    event.stopPropagation();
+    window.speechSynthesis.cancel();
+
+    const texto = document.getElementById('card-example-text').innerText;
+    const msg = new SpeechSynthesisUtterance(texto);
+
+    const mapeamento = {
+        'ingles': 'en-US',
+        'espanhol': 'es-ES',
+        'alemao': 'de-DE',
+        'polones': 'pl-PL',
+        'russo': 'ru-RU'
+    };
+
+    msg.lang = mapeamento[idiomaSelecionado] || 'en-US';
+    msg.rate = 0.85; // Um pouquinho mais devagar para frases longas
+
+    window.speechSynthesis.speak(msg);
+};
